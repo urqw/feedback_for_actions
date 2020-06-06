@@ -1,0 +1,34 @@
+/* The file encoding is Windows-1251 */
+
+:start
+pln Добро пожаловать в тест плагина Feedback for actions.
+anykey
+cls
+pln Введите своё имя:
+input имя
+cls
+pln Здравствуйте, #имя$.
+inv+ Монетка
+goto main
+
+:main
+p Перед вами [[счётчик|click]].
+if clicks > 0 then pln  Он показывает #clicks$ сделанных нажатий. else pln
+btn click, Нажать на счётчик.
+btn cls & pln Вы подпрыгнули на месте. & goto main, Подпрыгнуть.
+end
+
+:use_Монетка_осмотреть
+cls
+pln Обычная монетка с орлом и решкой.
+goto main
+
+:use_Монетка_подкинуть
+cls
+if rnd2 = 1 then Pln Выпал орёл. else pln Выпала решка.
+goto main
+
+:click
+cls
+clicks = clicks + 1
+goto main
