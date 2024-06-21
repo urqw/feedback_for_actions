@@ -7,7 +7,7 @@ due to its focus on a Russian-speaking audience.
 
 *Версия от 06.06.2020 для UrqW 1.0.*
 
-Плагин для [UrqW](https://github.com/narmiel/UrqW),
+Плагин для [UrqW](https://github.com/urqw/UrqW),
 добавляющий обратную связь для действий игрока
 в виде звуковых и вибрационных сигналов.
 
@@ -41,7 +41,7 @@ due to its focus on a Russian-speaking audience.
 и на практике ознакомиться с работой плагина.
 
 Другие плагины для UrqW см. в
-[общем репозитории](https://github.com/tseykovets/UrqW_plugins).
+[общем репозитории](https://github.com/urqw/plugins).
 
 Однако будьте осторожны: не все плагины UrqW могут быть легко скомбинированы
 посредством копирования их кода в один файл.
