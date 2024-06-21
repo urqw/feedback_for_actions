@@ -1,6 +1,7 @@
 /**
  * Copyright (C) 2020 Nikita Tseykovets <tseikovets@rambler.ru>
- * Copyright (C) narmiel (UrqW project from which part of code is borrowed)
+ * Copyright (C) 2015 Akela <akela88@bk.ru>
+ *     (UrqW project from which part of code is borrowed)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,6 +33,12 @@ var
 	// feedback for input
 	inputSound = gotoSound,
 	inputVibration = gotoVibration;
+
+/**
+ * Modifying several actions functions
+ * from UrqW (/js/Player/Player.js)
+ * to built-in feedback
+ */
 
 Player.prototype.btnAction = function(labelName) {
 	this.cls();
