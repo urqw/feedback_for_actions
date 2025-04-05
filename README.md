@@ -5,7 +5,7 @@ due to its focus on a Russian-speaking audience.
 
 # Feedback for actions
 
-*Версия от 06.06.2020 для UrqW 1.0.*
+*Версия от 05.04.2025 для UrqW 1.0.*
 
 Плагин для [UrqW](https://github.com/urqw/UrqW),
 добавляющий обратную связь для действий игрока

@@ -1,7 +1,5 @@
 /**
- * Copyright (C) 2020 Nikita Tseykovets <tseikovets@rambler.ru>
- * Copyright (C) 2015 Akela <akela88@bk.ru>
- *     (UrqW project from which part of code is borrowed)
+ * Copyright (C) 2020, 2025 Nikita Tseykovets <tseikovets@rambler.ru>
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -22,54 +20,45 @@ var
 	inputSound = gotoSound,
 	inputVibration = gotoVibration;
 
-/**
- * Modifying several actions functions
- * from UrqW (/js/Player/Player.js)
- * to built-in feedback
- */
+// Save links to original functions from UrqW (/js/Player/Player.js)
+var btnActionOriginal = Player.prototype.btnAction;
+var xbtnActionOriginal = Player.prototype.xbtnAction;
+var useActionOriginal = Player.prototype.useAction;
+var anykeyActionOriginal = Player.prototype.anykeyAction;
+var inputActionOriginal = Player.prototype.inputAction;
+
+// Rewrite original functions for various actions
 
 Player.prototype.btnAction = function(labelName) {
-	this.cls();
-
-	this.common();
-
 	if (this.goto(labelName, 'btn')) {
 		feedbackForActions('goto');
-		this.continue();
 	}
+	return btnActionOriginal.call(this, labelName);
 };
 
 Player.prototype.xbtnAction = function(command) {
-	this.common();
-
 	feedbackForActions('xbtn');
-	this.play(command + '&end');
-	this.fin();
+	return xbtnActionOriginal.call(this, command);
 };
 
 Player.prototype.useAction = function(labelName) {
-	if (this.lock) return false;
-
-	feedbackForActions('use');
-	this.play('proc ' + labelName + '&end');
-	this.fin();
+	if (!this.lock) {
+		feedbackForActions('use');
+	}
+	return useActionOriginal.call(this, labelName);
 };
 
 Player.prototype.anykeyAction = function(keycode) {
-	if (this.inf.length > 0) {
-		this.setVar(this.inf, keycode);
-	}
-
 	feedbackForActions('anykey');
-	GlobalPlayer.continue();
+	return anykeyActionOriginal.call(this, keycode);
 };
 
 Player.prototype.inputAction = function(value) {
-	this.setVar(this.inf, value);
-
 	feedbackForActions('input');
-	this.continue();
+	return inputActionOriginal.call(this, value);
 };
+
+// Functions for sound and vibration feedback
 
 function feedbackForActions(type) {
 	var sound, vibration;
