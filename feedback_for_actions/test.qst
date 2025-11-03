@@ -1,31 +1,29 @@
-/* The file encoding is Windows-1251 */
-
 :start
-pln Добро пожаловать в тест плагина Feedback for actions.
+pln Welcome to the Feedback for Actions plugin demonstration.
 anykey
 cls
-pln Введите своё имя:
-input имя
+pln Enter your name:
+input name
 cls
-pln Здравствуйте, #имя$.
-inv+ Монетка
+pln Hello, #name$!
+inv+ Coin
 goto main
 
 :main
-p Перед вами [[счётчик|click]].
-if clicks > 0 then pln  Он показывает #clicks$ сделанных нажатий. else pln
-btn click, Нажать на счётчик.
-btn cls & pln Вы подпрыгнули на месте. & goto main, Подпрыгнуть.
+p There is a [[counter|click]] in front of you
+if clicks > 0 then pln #$It shows the #clicks$ clicks made. else pln
+btn click, Click on the counter
+btn cls & pln You jumped on the spot. & goto main, Jump
 end
 
-:use_Монетка_осмотреть
+:use_Coin_examine
 cls
-pln Обычная монетка с орлом и решкой.
+pln A regular coin with heads and tails.
 goto main
 
-:use_Монетка_подкинуть
+:use_Coin_flip
 cls
-if rnd2 = 1 then Pln Выпал орёл. else pln Выпала решка.
+if rnd2 = 1 then Pln It came up heads. else pln It came up tails.
 goto main
 
 :click

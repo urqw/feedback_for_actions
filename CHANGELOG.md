@@ -1,11 +1,11 @@
-# Журнал изменений
+# Changelog
 
-## Версия от 05.04.2025
+* Translation of documentation and demonstration into English.
 
-* Реализация через последующий вызов оригинальной функции, а не через полную
-	замену оригинальной функции. Как следствие, обеспечена улучшенная
-	совместимость с разными версиями UrqW.
+## Version from 2025-04-05
 
-## Версия от 06.06.2020
+* Implementation is via overriding and then calling the original function, rather than completely replacing the original function. This ensures improved compatibility with different versions of UrqW.
 
-* Первая версия.
+## Version from 2020-06-06
+
+* First version.

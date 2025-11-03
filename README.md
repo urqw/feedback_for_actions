@@ -1,49 +1,29 @@
-This project is documented and conducted in Russian
-due to its focus on a Russian-speaking audience.
+# Feedback for Actions
 
-<div lang="ru">
+*Version from 2025-04-05 for UrqW 1.0.*
 
-# Feedback for actions
+A plugin for [UrqW](https://github.com/urqw/UrqW) that adds feedback for player actions in the form of sound and vibration signals.
 
-*Версия от 05.04.2025 для UrqW 1.0.*
+It is possible to separately configure sound and vibration signals for the following actions:
 
-Плагин для [UrqW](https://github.com/urqw/UrqW),
-добавляющий обратную связь для действий игрока
-в виде звуковых и вибрационных сигналов.
+1. Activating a choice button (`btn`) or a link within text (`[[*]]`).
+2. Activating a choice button with multiple actions (xbtn-like).
+3. Activating a link to use an inventory item (`use_*` labels).
+4. Moving to the next portion of the output text (`anykey`).
+5. Entering a text string (`input`).
 
-Реализована возможность отдельно настроить звуковой и вибрационный сигнал
-для следующих действий:
+When playing feedback sounds, the volume setting in the UrqW toolbar is taken into account.
 
-1. Активация кнопки выбора (btn) или ссылки внутри текста ([[*|*]]).
-2. Активация кнопки выбора с множественными действиями (типа xbtn).
-3. Активация ссылки использования объекта из инвентаря (метки use_*).
-4. Переход к следующей порции выводимого текста (anykey).
-5. Ввод текстовой строки (input).
+Sound and vibration signals for player actions are configured by defining the corresponding variables at the beginning of the plugin code.
 
-При воспроизведении звуков обратной связи учитывается настройка громкости
-из верхней панели UrqW.
+A sound signal is defined as the path to the corresponding audio file, which must be specified relative to the game's .qst file, similar to the `play` operator.
 
-Звуковые и вибрационные сигналы для действий игрока настраиваются
-посредством определения соответствующих переменных в начале кода плагина.
+A vibration signal is defined in accordance with the [Vibration API](https://www.w3.org/TR/vibration/).
+For example, as an array in which elements zero and subsequent with even indices specify the duration of vibration intervals, while elements with odd indices specify the pauses between these signals.
+The duration is specified as a number in milliseconds.
 
-Звуковой сигнал определяется как путь к соответствующему аудиофайлу,
-который нужно указывать относительно QST-файла игры аналогично команде play.
+The plugin and an example of its use can be found in the urqw directory. A demo of the plugin can be viewed at <https://urqw.github.io/UrqW#feedback_for_actions>
 
-Вибрационный сигнал определяется в соответствии с
-[Vibration API](https://www.w3.org/TR/vibration/).
-Например, как массив, в котором нулевой и последующие элементы
-с чётным индексом задают длительность интервалов вибрации,
-а элементы с нечётными индексами задают паузы между этими сигналами.
-Длительность задаётся числом в миллисекундах.
+For other UrqW plugins, see the [common repository](https://github.com/urqw/plugins).
 
-Вы можете заархивировать папку с плагином и тестовым файлом .qst,
-добавить этот архив в UrqW как любую другую игру
-и на практике ознакомиться с работой плагина.
-
-Другие плагины для UrqW см. в
-[общем репозитории](https://github.com/urqw/plugins).
-
-Однако будьте осторожны: не все плагины UrqW могут быть легко скомбинированы
-посредством копирования их кода в один файл.
-
-</div>
+Be careful, though: not all UrqW plugins can be easily combined.
