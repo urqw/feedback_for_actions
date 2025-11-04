@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-var
+let
 	// feedback for buttons or links
 	gotoSound = 'click.mp3',
 	gotoVibration = [30, 10, 30],
@@ -15,19 +15,19 @@ var
 	useVibration = gotoVibration,
 	// feedback for anykey
 	anykeySound = gotoSound,
-	anykeyVibration = gotoVibration;
+	anykeyVibration = gotoVibration,
 	// feedback for input
 	inputSound = gotoSound,
 	inputVibration = gotoVibration;
 
-// Save links to original functions from UrqW (/js/Player/Player.js)
-var btnActionOriginal = Player.prototype.btnAction;
-var xbtnActionOriginal = Player.prototype.xbtnAction;
-var useActionOriginal = Player.prototype.useAction;
-var anykeyActionOriginal = Player.prototype.anykeyAction;
-var inputActionOriginal = Player.prototype.inputAction;
+// Save links to original functions
+const btnActionOriginal = Player.prototype.btnAction;
+const xbtnActionOriginal = Player.prototype.xbtnAction;
+const useActionOriginal = Player.prototype.useAction;
+const anykeyActionOriginal = Player.prototype.anykeyAction;
+const inputActionOriginal = Player.prototype.inputAction;
 
-// Rewrite original functions for various actions
+// Override original functions
 
 Player.prototype.btnAction = function(labelName) {
 	if (this.goto(labelName, 'btn')) {
@@ -61,7 +61,7 @@ Player.prototype.inputAction = function(value) {
 // Functions for sound and vibration feedback
 
 function feedbackForActions(type) {
-	var sound, vibration;
+	let sound, vibration;
 	switch(type) {
 		case 'goto':
 			sound = gotoSound;
@@ -91,16 +91,17 @@ function feedbackForActions(type) {
 }
 
 function soundFeedback(file) {
-	if (volume == 3) return;
+	if (volumeMultiplier == 0 || Number(settings['volume']) == 0) return;
 
-	var Sound;
+	let src;
 	if (files === null) {
-		Sound = new Audio('quests/' + Game.name + '/' + file.toString().trim());
+		src = normalizeInternalPath(questPath + '/' + file.toString().trim());
 	} else {
-		Sound = new Audio(files[file.toString().trim()]);
+		src = files[normalizeInternalPath(file.toString().trim())];
 	}
+	const Sound = new Audio(src);
 
-	Sound.volume = (volume == 1) ? 1 : 0.5;
+	Sound.volume = Number(settings['volume'])/100*volumeMultiplier;
 	Sound.play();
 }
 
