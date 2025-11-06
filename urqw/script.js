@@ -1,4 +1,5 @@
 /**
+ * Feedback for Actions - plugin for UrqW <https://github.com/urqw/feedback_for_actions>
  * Copyright (C) 2020, 2025 Nikita Tseykovets <tseikovets@rambler.ru>
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
