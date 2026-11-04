@@ -1,6 +1,6 @@
 # Feedback for Actions
 
-*Version from 2025-11-03 for UrqW 1.1.*
+*Version from 2025-11-03 for UrqW 2.0.*
 
 A plugin for [UrqW](https://github.com/urqw/UrqW) that adds feedback for player actions in the form of sound and vibration signals.
 
